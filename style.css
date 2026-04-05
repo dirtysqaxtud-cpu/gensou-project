@@ -1,0 +1,424 @@
+/* ===============================
+   背景・全体
+================================= */
+body {
+    background-image: linear-gradient(
+        rgba(10, 15, 30, 0.72),
+        rgba(10, 15, 30, 0.9)
+    ), url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #e8ecff;
+    font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===============================
+   基本文字
+================================= */
+p {
+    line-height: 1.9;
+    color: #e8ecff;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ===============================
+   ヘッダー
+================================= */
+header {
+    text-align: center;
+    padding: 80px 20px 40px;
+    background: linear-gradient(
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.01)
+    );
+    backdrop-filter: blur(2px);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 64px;
+    letter-spacing: 6px;
+    color: #f4f7ff;
+    text-shadow:
+        0 0 20px rgba(180,200,255,0.4),
+        0 0 40px rgba(120,150,255,0.2);
+}
+
+header p {
+    margin-top: 14px;
+    font-size: 18px;
+    color: #b8c4ff;
+}
+
+/* ===============================
+   ナビ
+================================= */
+nav {
+    text-align: center;
+    padding: 14px 10px;
+    background-color: rgba(255,255,255,0.06);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+nav a {
+    display: inline-block;
+    margin: 0 18px;
+    color: #a9bbff;
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+nav a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(180,200,255,0.35);
+}
+
+/* ===============================
+   メインボックス
+================================= */
+main {
+    max-width: 980px;
+    margin: 44px auto;
+    padding: 34px;
+    background-color: rgba(8, 10, 20, 0.75);
+    border-radius: 20px;
+    box-shadow:
+        0 0 40px rgba(0,0,0,0.4),
+        0 0 20px rgba(120,150,255,0.15);
+    backdrop-filter: blur(6px);
+}
+
+/* ===============================
+   セクション
+================================= */
+section {
+    margin-bottom: 50px;
+}
+
+/* ===============================
+   見出し
+================================= */
+h2 {
+    border-left: 5px solid #8ea8ff;
+    padding-left: 12px;
+    margin-top: 34px;
+    margin-bottom: 18px;
+    color: #f3f6ff;
+    font-size: 32px;
+}
+
+h3 {
+    margin-top: 24px;
+    margin-bottom: 10px;
+    color: #dce6ff;
+    font-size: 24px;
+}
+
+/* ===============================
+   導入文
+================================= */
+.lead {
+    font-size: 22px;
+}
+
+/* ===============================
+   キャラ一覧
+   indexでは4枚が自動で2段になる
+   charactersでは1枚だけ中央に来る
+================================= */
+.character-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* ===============================
+   キャラカード共通
+================================= */
+.character-card {
+    background: rgba(255,255,255,0.06);
+    padding: 18px;
+    border-radius: 18px;
+    text-align: center;
+    width: 260px;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    box-shadow: 0 0 12px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.character-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    background: rgba(255,255,255,0.09);
+}
+
+/* ===============================
+   キャラごとの色演出
+================================= */
+.yura-card {
+    box-shadow:
+        0 0 16px rgba(170,155,255,0.18),
+        0 0 12px rgba(0,0,0,0.15);
+}
+.yura-card:hover {
+    box-shadow:
+        0 0 32px rgba(170,155,255,0.38),
+        0 0 20px rgba(0,0,0,0.28);
+}
+
+.aoi-card {
+    box-shadow:
+        0 0 16px rgba(90,220,210,0.18),
+        0 0 12px rgba(0,0,0,0.15);
+}
+.aoi-card:hover {
+    box-shadow:
+        0 0 32px rgba(90,220,210,0.38),
+        0 0 20px rgba(0,0,0,0.28);
+}
+
+.rewrite-card {
+    box-shadow:
+        0 0 16px rgba(210,210,255,0.18),
+        0 0 12px rgba(0,0,0,0.15);
+}
+.rewrite-card:hover {
+    box-shadow:
+        0 0 32px rgba(210,210,255,0.38),
+        0 0 20px rgba(0,0,0,0.28);
+}
+
+.reno-card {
+    box-shadow:
+        0 0 16px rgba(145,120,255,0.18),
+        0 0 12px rgba(0,0,0,0.15);
+}
+.reno-card:hover {
+    box-shadow:
+        0 0 32px rgba(145,120,255,0.38),
+        0 0 20px rgba(0,0,0,0.28);
+}
+
+/* ===============================
+   キャラ画像
+================================= */
+.character-card img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+    margin: 0 auto 14px;
+}
+
+/* ===============================
+   カード内文字
+================================= */
+.character-card p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f2f5ff;
+}
+
+small {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.yura-card small {
+    color: #c8bcff;
+}
+.aoi-card small {
+    color: #8fe9df;
+}
+.rewrite-card small {
+    color: #e7e7ff;
+}
+.reno-card small {
+    color: #c8b7ff;
+}
+
+/* ===============================
+   準備中カード
+================================= */
+.empty-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 260px;
+    color: #9aa7d8;
+    font-size: 20px;
+}
+
+/* ===============================
+   キャラ詳細ページ
+================================= */
+.profile-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 34px;
+}
+
+.profile-image img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow:
+        0 0 18px rgba(142,168,255,0.15),
+        0 0 8px rgba(0,0,0,0.2);
+}
+
+.profile-info {
+    flex: 1;
+    min-width: 260px;
+    background: rgba(255,255,255,0.06);
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 0 14px rgba(0,0,0,0.15);
+}
+
+.profile-info h2 {
+    margin-top: 0;
+}
+
+.profile-info p {
+    margin: 10px 0;
+    line-height: 1.85;
+}
+
+/* ===============================
+   画像保険
+================================= */
+main img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===============================
+   関係図（完全固定版）
+================================= */
+
+.circle-container {
+    position: relative;
+    width: 420px;
+    height: 420px;
+    margin: 60px auto;
+}
+
+/* 背景 */
+.circle-bg {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.25;
+    border-radius: 50%;
+}
+
+/* 円共通 */
+.circle {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(6px);
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+/* 上 */
+.yura {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 右 */
+.aoi {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* 下 */
+.rewrite {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 左 */
+.reno {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* 名前 */
+.name {
+    font-weight: bold;
+}
+
+/* 役職 */
+.role {
+    font-size: 12px;
+    color: #c8d3ff;
+}
+
+/* ホバー説明 */
+.tooltip {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10,10,20,0.9);
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    opacity: 0;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.circle:hover .tooltip {
+    opacity: 1;
+}
+
+.story-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 26px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #8ea8ff, #6f8cff);
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.story-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(120,150,255,0.5);
+}
