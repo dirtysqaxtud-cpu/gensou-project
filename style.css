@@ -422,3 +422,25 @@ main img {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(120,150,255,0.5);
 }
+
+.episode-next {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.next-button {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  background: linear-gradient(135deg, rgba(92,124,255,0.95), rgba(127,92,255,0.95));
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.next-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}

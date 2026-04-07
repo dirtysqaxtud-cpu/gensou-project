@@ -1,126 +1,140 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>ストーリー | 幻想プロジェクト</title>
-<link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ストーリー | 幻想プロジェクト</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .story-wrapper {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
 
+    .story-intro-box,
+    .episode-card {
+      background: rgba(5, 10, 35, 0.85);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .story-intro-box h2,
+    .episode-card h3 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .story-intro-box p,
+    .episode-card p {
+      color: rgba(255,255,255,0.9);
+      line-height: 2;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .episode-next {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .next-button {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 700;
+      background: linear-gradient(135deg, rgba(92,124,255,0.95), rgba(127,92,255,0.95));
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .next-button:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    @media (max-width: 800px) {
+      .episode-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
 <body>
 
 <header>
-    <h1>ストーリー</h1>
-    <p>幻想域で始まる、記録の揺らぎ</p>
-</header>
-
-<nav>
+  <h1>ストーリー</h1>
+  <nav>
     <a href="index.html">ホーム</a>
     <a href="world.html">世界観</a>
     <a href="characters.html">キャラクター</a>
     <a href="relations.html">関係図</a>
     <a href="story.html">ストーリー</a>
     <a href="glossary.html">用語集</a>
-</nav>
+    <a href="submit.html">記録提出</a>
+  </nav>
+</header>
 
-<main>
+<main class="story-wrapper">
 
-    <section>
-        <h2>はじまり</h2>
-        <p class="lead">
-            記録されたものだけが、存在できる。<br>
-            その法則のもとで、幻想域は静かに成り立っていた。
-        </p>
-        <p>
-            現界で生まれた言葉、記憶、音、想い。<br>
-            それらは“記録”となり、幻想域へ流れ込み、景色や存在を形作っていく。<br>
-            幻想域に在るものは人ではない。<br>
-            記録や感情、欠落や歪みといった概念が、形を持った存在である。
-        </p>
-    </section>
+  <section class="story-intro-box">
+    <h2>物語のはじまり</h2>
 
-    <section>
-        <h2>異変</h2>
-        <p>
-            だがある時から、現界から流れ込む記録は少しずつ途絶え始めた。<br>
-            記録を失った幻想域では、存在が揺らぎ、景色が欠け、断章が増えていく。<br>
-            失われたものは元の形を保てず、やがて消失へと向かう。
-        </p>
-        <p>
-            その静かな崩れの中で、幻想域を巡る四つの力が動き始める。<br>
-            保持、収集、改変、消去。<br>
-            それぞれの役割を持つ存在たちが、異なる形で世界に関わり始めた。
-        </p>
-    </section>
+    <p>これは、記録によって存在する世界の物語。</p>
 
-    <section>
-        <h2>存在たち</h2>
+    <p>言葉、記憶、感情──
+    それらは「記録」として残り、
+    幻想域へと流れ着く。</p>
 
-        <h3>譜守ユラ ― 保持者</h3>
-        <p>
-            崩れかけた記録を支え、存在を維持しようとする者。<br>
-            幻想域の安定を守るため、消えかけたものを繋ぎ止めている。
-        </p>
+    <p>記録は、存在を生み出す。</p>
 
-        <h3>綴目アオ ― 収集者</h3>
-        <p>
-            失われた記録や断章を拾い集める者。<br>
-            どこにも属さず、中立の立場で世界の欠片を抱え続けている。
-        </p>
+    <p>そして存在は、
+    記録によって形を保っている。</p>
 
-        <h3>Rewrite ― 改変者</h3>
-        <p>
-            記録そのものを書き換え、世界をより良い形へ導こうとする者。<br>
-            だがその行為は、救済であると同時に歪みでもある。
-        </p>
+    <p>だが今、幻想域に
+    わずかな“揺らぎ”が生まれ始めている。</p>
 
-        <h3>零乃 ― 消去者</h3>
-        <p>
-            記録と存在の繋がりを断ち、消失をもたらす者。<br>
-            現界にも幻想域にも属さず、両方の空白に在る。
-        </p>
-    </section>
+    <p>記録に支えられないもの。</p>
+    <p>存在しているはずのないもの。</p>
 
-    <section>
-        <h2>揺らぐ世界</h2>
-        <p>
-            ユラは守ろうとする。<br>
-            アオは拾い集める。<br>
-            Rewrite は書き換えようとする。<br>
-            零乃は静かに断ち切る。
-        </p>
-        <p>
-            その力は互いにぶつかり合いながら、幻想域そのものを変えていく。<br>
-            記録は本当に守られるべきものなのか。<br>
-            失われたものは取り戻せるのか。<br>
-            書き換えられた世界は、正しい世界と呼べるのか。<br>
-            そして消去の先に残るものは、何なのか。
-        </p>
-    </section>
+    <p>それはやがて、
+    世界の構造そのものを揺るがす。</p>
 
-    <section>
-        <h2>物語のはじまり</h2>
-        <p>
-            これは、記録によって存在する世界の物語。<br>
-            静かに崩れていく幻想域の中で、四つの力が交差し、循環し、やがて大きな異変へと繋がっていく。
-        </p>
-        <p class="lead">
-            幻想域は今、揺らいでいる。
-        </p>
-    </section>
+    <p>幻想は、消えない。</p>
+
+    <p>これは、
+    幻想が織りなす物語。</p>
+  </section>
+
+  <section class="episode-list">
+    <div class="episode-card">
+      <h3>第一話</h3>
+      <p>幻想域の空は、いつも通り静かだった。</p>
+      <p>だがその日、ほんのわずかに、何かが欠けている違和感が生まれる。</p>
+      <div class="episode-next">
+        <a href="episode1.html" class="next-button">第一話を読む</a>
+      </div>
+    </div>
+
+    <div class="episode-card">
+      <h3>第二話</h3>
+      <p>揺らぎは消えず、むしろわずかに広がっていた。</p>
+      <p>存在しているのに、どこにも記録されていない断片が見つかる。</p>
+      <div class="episode-next">
+        <a href="episode2.html" class="next-button">第二話を読む</a>
+      </div>
+    </div>
+  </section>
 
 </main>
 
 </body>
 </html>
-
-<section>
-    <h2>物語を読む</h2>
-
-    <p>
-        幻想域で起き始めた異変は、やがてひとつの物語となる。
-    </p>
-
-    <a href="episode1.html" class="story-button">
-        ▶ 第一話を読む
-    </a>
-</section>

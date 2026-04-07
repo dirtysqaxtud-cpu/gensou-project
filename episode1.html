@@ -1,76 +1,105 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>第一話 | 幻想プロジェクト</title>
-<link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第一話 | 幻想プロジェクト</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .story-page {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
 
+    .story-box {
+      background: rgba(5, 10, 35, 0.85);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .story-box h2 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .story-box p {
+      color: rgba(255,255,255,0.9);
+      line-height: 2;
+    }
+
+    .episode-next {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .next-button {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 700;
+      background: linear-gradient(135deg, rgba(92,124,255,0.95), rgba(127,92,255,0.95));
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      margin: 0 8px;
+    }
+
+    .next-button:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+  </style>
+</head>
 <body>
 
 <header>
-    <h1>第一話</h1>
-    <p>揺らぎのはじまり</p>
-</header>
-
-<nav>
+  <h1>第一話</h1>
+  <nav>
     <a href="index.html">ホーム</a>
     <a href="world.html">世界観</a>
     <a href="characters.html">キャラクター</a>
     <a href="relations.html">関係図</a>
     <a href="story.html">ストーリー</a>
     <a href="glossary.html">用語集</a>
-</nav>
+    <a href="submit.html">記録提出</a>
+  </nav>
+</header>
 
-<main>
-
-<section>
+<main class="story-page">
+  <section class="story-box">
     <h2>第一話　揺らぎのはじまり</h2>
 
-    <p>
-        幻想域の空は、いつも通り静かだった。<br>
-        記録によって形作られた世界は、揺らぐことなく存在しているはずだった。
-    </p>
+    <p>幻想域の空は、いつも通り静かだった。</p>
+    <p>記録によって形作られた世界は、揺らぐことなく存在しているはずだった。</p>
 
-    <p>
-        だがその日、ひとつの違和感が生まれる。<br>
-        ほんのわずかに、何かが“欠けている”。
-    </p>
+    <p>だがその日、ひとつの違和感が生まれる。</p>
+    <p>ほんのわずかに、何かが“欠けている”。</p>
 
-    <p>
-        譜守ユラは、それに最初に気づいた。<br>
-        いつも保っているはずの譜が、わずかに崩れている。
-    </p>
+    <p>譜守ユラは、それに最初に気づいた。</p>
+    <p>いつも保っているはずの譜が、わずかに崩れている。</p>
 
-    <p>
-        「……おかしい」
-    </p>
+    <p>「……おかしい」</p>
 
-    <p>
-        それは、消失と呼ぶにはあまりにも小さく、<br>
-        しかし見逃すには確かすぎる違和感だった。
-    </p>
+    <p>それは、消失と呼ぶにはあまりにも小さく、</p>
+    <p>しかし見過ごすには確かすぎる違和感だった。</p>
 
-    <p>
-        同じ頃、綴目アオは断章を拾っていた。<br>
-        本来あるはずのない、欠けた記録。
-    </p>
+    <p>同じ頃、綴目アオは断章を拾っていた。</p>
+    <p>本来あるはずのない、欠けた記録。</p>
 
-    <p>
-        Rewriteはそれを見て、静かに微笑む。<br>
-        「……なるほど」
-    </p>
+    <p>Rewriteはそれを見て、静かに微笑む。</p>
+    <p>「……なるほど」</p>
 
-    <p>
-        そして、どこにも属さない場所で、零乃はただ見ていた。
-    </p>
+    <p>そして、どこにも属さない場所で、零乃はただ見ていた。</p>
+    <p>「……はじまったね」</p>
 
-    <p>
-        「……はじまったね」
-    </p>
-
-</section>
-
+    <div class="episode-next">
+      <a href="story.html" class="next-button">ストーリー一覧へ</a>
+      <a href="episode2.html" class="next-button">第二話へ</a>
+    </div>
+  </section>
 </main>
 
 </body>
