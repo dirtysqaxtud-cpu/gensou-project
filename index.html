@@ -9,11 +9,11 @@
 <body>
 
 <header>
-    <h1>幻想プロジェクト</h1>
-    <p>記録されたものだけが、存在できる。</p>
+    <h1 class="site-title">幻想プロジェクト</h1>
+    <p class="site-sub">記録されたものだけが、存在できる。</p>
 </header>
 
-<nav>
+<nav class="main-nav">
     <a href="index.html">ホーム</a>
     <a href="world.html">世界観</a>
     <a href="characters.html">キャラクター</a>
@@ -25,7 +25,7 @@
 
 <main>
 
-    <section>
+    <section class="intro-section">
         <h2>幻想とは何か</h2>
         <p class="lead">
             記録は、存在を生む。<br>
@@ -33,7 +33,7 @@
         </p>
     </section>
 
-    <section>
+    <section class="content-section">
         <h2>概要</h2>
         <p>
             現界で生まれた記録は、幻想域へと流れ、存在を形作る。<br>
@@ -44,14 +44,22 @@
         </p>
     </section>
 
-    <section>
+    <section class="content-section">
+        <h2>未解明記録</h2>
+        <p class="mystery">
+            この世界は、まだ完全ではない。<br>
+            一部の記録は、観測されていないにも関わらず存在している。
+        </p>
+    </section>
+
+    <section class="content-section">
         <h2>主要キャラクター</h2>
 
         <div class="character-list">
 
             <div class="character-card yura-card">
                 <a href="yura.html">
-                    <img src="yura.jpg">
+                    <img src="yura.jpg" alt="譜守ユラ">
                 </a>
                 <p>譜守ユラ</p>
                 <small>保持者</small>
@@ -59,7 +67,7 @@
 
             <div class="character-card aoi-card">
                 <a href="aoi.html">
-                    <img src="aoi.jpg">
+                    <img src="aoi.jpg" alt="綴目アオ">
                 </a>
                 <p>綴目アオ</p>
                 <small>収集者</small>
@@ -67,7 +75,7 @@
 
             <div class="character-card rewrite-card">
                 <a href="rewrite.html">
-                    <img src="rewrite.jpg">
+                    <img src="rewrite.jpg" alt="Rewrite">
                 </a>
                 <p>Rewrite</p>
                 <small>改変者</small>
@@ -75,17 +83,52 @@
 
             <div class="character-card reno-card">
                 <a href="reno.html">
-                    <img src="reno.jpg">
+                    <img src="reno.jpg" alt="零乃">
                 </a>
                 <p>零乃</p>
                 <small>消去者</small>
             </div>
 
         </div>
+    </section>
 
+    <section class="record-entry">
+        <p>
+            この世界は、記録によって形作られる。<br>
+            あなたの記録が、存在を生むかもしれない。
+        </p>
+
+        <a href="submit.html" class="record-link">
+            ――記録を残す
+        </a>
+    </section>
+
+    <section class="content-section">
+        <h2>最近の記録</h2>
+        <div class="record-list">
+            <p>・「名前のない記憶が、ここに残っている」</p>
+            <p>・「消えたはずの感情が、まだ存在している」</p>
+            <p>・「誰も知らない記録が、観測された」</p>
+        </div>
     </section>
 
 </main>
+
+<script>
+for (let i = 0; i < 10; i++) {
+    const sakura = document.createElement("img");
+    sakura.src = "sakura.png";
+    sakura.className = "sakura";
+
+    sakura.style.left = Math.random() * 100 + "vw";
+    sakura.style.animationDuration = 6 + Math.random() * 6 + "s";
+    sakura.style.animationDelay = Math.random() * 5 + "s";
+    sakura.style.opacity = 0.35 + Math.random() * 0.45;
+    sakura.style.width = 16 + Math.random() * 18 + "px";
+
+    document.body.appendChild(sakura);
+}
+</script>
 
 </body>
 </html>

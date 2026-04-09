@@ -8,9 +8,11 @@
 
 <body>
 
-<header>
-  <h1>存在記録提出</h1>
-  <nav>
+<header class="page-header">
+  <h1 class="site-title">存在記録提出</h1>
+  <p class="site-sub">この記録は、どこかに残る。</p>
+
+  <nav class="main-nav">
     <a href="index.html">ホーム</a>
     <a href="world.html">世界観</a>
     <a href="characters.html">キャラクター</a>
@@ -21,23 +23,47 @@
   </nav>
 </header>
 
-<main style="max-width:1000px;margin:40px auto;padding:20px;">
-  <section style="background:rgba(5,10,35,0.85);padding:24px;border-radius:20px;">
-    
-    <h2>存在記録提出フォーム</h2>
+<main class="submit-main">
+  <section class="submit-panel">
 
-    <iframe 
-      data-tally-src="https://tally.so/r/2EvQKL"
-      loading="lazy"
-      width="100%"
-      height="1800"
-      frameborder="0">
-    </iframe>
+    <div class="submit-intro">
+      <h2 class="submit-title">存在の記録</h2>
+      <p>
+        ここに記されたものは、記録として残る。<br>
+        完全である必要はない。断片でも、感情でもいい。
+      </p>
+      <p>
+        採用された記録は、幻想域を形作る一部となる可能性がある。<br>
+        あなたの記録は、この世界のどこかに残るかもしれない。
+      </p>
+      <p class="submit-last-line">――記録を、残せ。</p>
+    </div>
 
-    <script src="https://tally.so/widgets/embed.js"></script>
+    <div class="form-frame">
+      <h3 class="form-title">記録提出フォーム</h3>
+
+      <div class="tally-wrap">
+        <iframe 
+          data-tally-src="https://tally.so/r/2EvQKL"
+          loading="lazy"
+          width="100%"
+          height="1800"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="存在記録提出フォーム">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="submit-note">
+      <p>※ 記録は再構成・再解釈される場合があります。</p>
+    </div>
 
   </section>
 </main>
+
+<script src="https://tally.so/widgets/embed.js"></script>
 
 </body>
 </html>
