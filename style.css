@@ -133,10 +133,10 @@ h3 {
    キャラ一覧
 ================================= */
 .character-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    justify-items: center;
     margin-top: 30px;
 }
 
@@ -144,19 +144,24 @@ h3 {
    キャラカード共通
 ================================= */
 .character-card {
-    background: rgba(255,255,255,0.06);
-    padding: 18px;
-    border-radius: 18px;
-    text-align: center;
     width: 260px;
-    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-    box-shadow: 0 0 12px rgba(0,0,0,0.15);
-    border: 1px solid rgba(255,255,255,0.05);
+    min-height: 360px;
+    background: rgba(20, 24, 50, 0.72);
+    border-radius: 22px;
+    text-align: center;
+    padding: 18px 18px 20px;
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow:
+        0 0 18px rgba(0,0,0,0.22),
+        0 0 28px rgba(90,120,255,0.08),
+        inset 0 0 0 1px rgba(255,255,255,0.02);
+    backdrop-filter: blur(8px);
+    transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
 }
 
 .character-card:hover {
     transform: translateY(-8px) scale(1.03);
-    background: rgba(255,255,255,0.09);
+    background: rgba(24, 28, 58, 0.82);
 }
 
 /* ===============================
@@ -164,59 +169,75 @@ h3 {
 ================================= */
 .yura-card {
     box-shadow:
-        0 0 16px rgba(170,155,255,0.18),
-        0 0 12px rgba(0,0,0,0.15);
+        0 0 18px rgba(0,0,0,0.22),
+        0 0 26px rgba(170,155,255,0.16),
+        inset 0 0 0 1px rgba(255,255,255,0.02);
 }
 .yura-card:hover {
     box-shadow:
-        0 0 32px rgba(170,155,255,0.38),
-        0 0 20px rgba(0,0,0,0.28);
+        0 0 18px rgba(0,0,0,0.22),
+        0 0 34px rgba(170,155,255,0.32),
+        0 0 60px rgba(170,155,255,0.12);
 }
 
 .aoi-card {
     box-shadow:
-        0 0 16px rgba(90,220,210,0.18),
-        0 0 12px rgba(0,0,0,0.15);
+        0 0 18px rgba(0,0,0,0.22),
+        0 0 26px rgba(90,220,210,0.16),
+        inset 0 0 0 1px rgba(255,255,255,0.02);
 }
 .aoi-card:hover {
     box-shadow:
-        0 0 32px rgba(90,220,210,0.38),
-        0 0 20px rgba(0,0,0,0.28);
+        0 0 18px rgba(0,0,0,0.22),
+        0 0 34px rgba(90,220,210,0.32),
+        0 0 60px rgba(90,220,210,0.12);
 }
 
 .rewrite-card {
     box-shadow:
-        0 0 16px rgba(210,210,255,0.18),
-        0 0 12px rgba(0,0,0,0.15);
+        0 0 18px rgba(0,0,0,0.22),
+        0 0 26px rgba(210,210,255,0.16),
+        inset 0 0 0 1px rgba(255,255,255,0.02);
 }
 .rewrite-card:hover {
     box-shadow:
-        0 0 32px rgba(210,210,255,0.38),
-        0 0 20px rgba(0,0,0,0.28);
+        0 0 18px rgba(0,0,0,0.22),
+        0 0 34px rgba(210,210,255,0.32),
+        0 0 60px rgba(210,210,255,0.12);
 }
 
 .reno-card {
     box-shadow:
-        0 0 16px rgba(145,120,255,0.18),
-        0 0 12px rgba(0,0,0,0.15);
+        0 0 18px rgba(0,0,0,0.22),
+        0 0 26px rgba(145,120,255,0.16),
+        inset 0 0 0 1px rgba(255,255,255,0.02);
 }
 .reno-card:hover {
     box-shadow:
-        0 0 32px rgba(145,120,255,0.38),
-        0 0 20px rgba(0,0,0,0.28);
+        0 0 18px rgba(0,0,0,0.22),
+        0 0 34px rgba(145,120,255,0.32),
+        0 0 60px rgba(145,120,255,0.12);
 }
 
 /* ===============================
-   キャラ一覧画像（固定版）
+   キャラ画像（全部同じ見え方）
 ================================= */
+.character-card a {
+    display: block;
+}
+
 .character-card img {
     width: 100%;
-    height: 260px;
+    height: 220px;
     object-fit: cover;
     object-position: center top;
-    border-radius: 14px;
+    border-radius: 16px;
     display: block;
-    margin: 0 auto 14px;
+    margin: 0 auto 18px;
+    background: rgba(10, 12, 24, 0.9);
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.03),
+        0 0 18px rgba(0,0,0,0.18);
 }
 
 /* ===============================
@@ -227,12 +248,17 @@ h3 {
     font-size: 20px;
     font-weight: bold;
     color: #f2f5ff;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 small {
     display: block;
     margin-top: 8px;
     font-size: 14px;
+    min-height: 22px;
 }
 
 .yura-card small {
@@ -255,9 +281,12 @@ small {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 260px;
+    height: 220px;
     color: #9aa7d8;
     font-size: 20px;
+    border-radius: 16px;
+    background: rgba(10, 12, 24, 0.9);
+    margin-bottom: 18px;
 }
 
 /* ===============================
@@ -311,94 +340,6 @@ small {
 ================================= */
 main img {
     max-width: 100%;
-}
-
-/* ===============================
-   関係図
-================================= */
-.circle-container {
-    position: relative;
-    width: 420px;
-    height: 420px;
-    margin: 60px auto;
-}
-
-.circle-bg {
-    position: absolute;
-    width: 260px;
-    height: 260px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0.25;
-    border-radius: 50%;
-}
-
-.circle {
-    position: absolute;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255,255,255,0.07);
-    backdrop-filter: blur(6px);
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    cursor: pointer;
-}
-
-.yura {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.aoi {
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.rewrite {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.reno {
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.name {
-    font-weight: bold;
-}
-
-.role {
-    font-size: 12px;
-    color: #c8d3ff;
-}
-
-.tooltip {
-    position: absolute;
-    bottom: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(10,10,20,0.9);
-    padding: 8px 12px;
-    border-radius: 10px;
-    font-size: 12px;
-    opacity: 0;
-    transition: 0.3s;
-    white-space: nowrap;
-}
-
-.circle:hover .tooltip {
-    opacity: 1;
 }
 
 /* ===============================
@@ -525,6 +466,172 @@ main img {
 }
 
 /* ===============================
+   桜エフェクト
+================================= */
+.sakura {
+    position: fixed;
+    top: -50px;
+    width: 20px;
+    animation: fall linear infinite;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes fall {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(30px, 50vh) rotate(180deg);
+    }
+    100% {
+        transform: translate(-30px, 110vh) rotate(360deg);
+    }
+}
+
+/* ===============================
+   関係図（完全静止版）
+================================= */
+.circle-container {
+    position: relative;
+    width: 420px;
+    height: 420px;
+    margin: 80px auto 60px;
+}
+
+.circle-bg {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.25;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.circle {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(6px);
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    cursor: default;
+    transition: none;
+}
+
+.circle:hover {
+    /* 何もしない */
+}
+
+.yura {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.aoi {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.rewrite {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flicker 3s infinite;
+}
+
+.reno {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: grayscale(70%) brightness(0.8);
+}
+
+.role-label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #f4f7ff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(100,150,255,0.45);
+}
+
+.name-label {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 14px;
+    color: rgba(235,242,255,0.85);
+}
+
+.tooltip {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10,10,20,0.9);
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.circle:hover .tooltip {
+    opacity: 1;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.85; }
+    100% { opacity: 1; }
+}
+
+.secret-text {
+    text-align: center;
+    margin-top: 36px;
+    color: rgba(255,255,255,0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.secret-text:hover {
+    color: rgba(255,255,255,0.78);
+}
+
+.relation-text {
+    text-align: center;
+    margin-top: 30px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+}
+
+.hidden-line {
+    margin-top: 40px;
+    text-align: center;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+/* ===============================
    スマホ対応
 ================================= */
 @media (max-width: 768px) {
@@ -564,16 +671,31 @@ main img {
     }
 
     .character-list {
-        gap: 24px;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
     }
 
     .character-card {
         width: 100%;
-        max-width: 320px;
+        max-width: 100%;
+        min-height: 300px;
+        padding: 14px 14px 16px;
     }
 
     .character-card img {
-        height: 240px;
+        height: 150px;
+        margin-bottom: 14px;
+        border-radius: 14px;
+    }
+
+    .character-card p {
+        font-size: 17px;
+        min-height: 24px;
+    }
+
+    small {
+        font-size: 12px;
+        min-height: 18px;
     }
 
     .profile-layout {
@@ -593,17 +715,33 @@ main img {
     .circle-container {
         width: 320px;
         height: 320px;
+        margin: 60px auto 50px;
     }
 
     .circle {
         width: 100px;
         height: 100px;
-        font-size: 14px;
+    }
+
+    .role-label {
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    .name-label {
+        bottom: -24px;
+        font-size: 12px;
     }
 
     .tooltip {
         font-size: 10px;
         bottom: -52px;
+        padding: 6px 10px;
+    }
+
+    .circle-bg {
+        width: 210px;
+        height: 210px;
     }
 
     .submit-main {
@@ -616,28 +754,179 @@ main img {
     }
 }
 
-/* ===============================
-   桜エフェクト
-================================= */
-
-.sakura {
-    position: fixed;
-    top: -50px;
-    width: 20px;
-    animation: fall linear infinite;
-    opacity: 0.7;
-    pointer-events: none;
-    z-index: 10;
+.secret-log {
+    margin-top: 8px;
+    font-size: 14px;
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+    min-height: 22px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
-@keyframes fall {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    50% {
-        transform: translate(30px, 50vh) rotate(180deg);
-    }
-    100% {
-        transform: translate(-30px, 110vh) rotate(360deg);
-    }
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trace | 幻想プロジェクト</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Trace</h1>
+    <p>残されている記録</p>
+</header>
+
+<nav>
+    <a href="index.html">ホーム</a>
+    <a href="world.html">世界観</a>
+    <a href="characters.html">キャラクター</a>
+    <a href="relations.html">関係図</a>
+    <a href="story.html">ストーリー</a>
+    <a href="glossary.html">用語集</a>
+    <a href="submit.html">記録提出</a>
+</nav>
+
+<main>
+    <section>
+        <h2>残された痕跡</h2>
+        <p>ここに何かが残っている。</p>
+    </section>
+</main>
+
+</body>
+</html>
+
+.broken-page {
+    filter: brightness(0.82) contrast(1.08);
+}
+
+.broken-title {
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.9);
+    text-shadow:
+        2px 0 rgba(255,80,80,0.18),
+        -2px 0 rgba(120,180,255,0.18);
+}
+
+.broken-sub {
+    color: rgba(255,220,220,0.6);
+}
+
+.glitch-line {
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+}
+
+.glitch-line.weak {
+    opacity: 0.62;
+    transform: translateX(3px);
+}
+
+.glitch-line.weaker {
+    opacity: 0.42;
+    transform: translateX(-4px);
+}
+
+.glitch-line.danger {
+    color: rgba(255,120,120,0.88);
+    letter-spacing: 2px;
+}
+
+.noisy {
+    text-shadow:
+        1px 0 rgba(255,0,0,0.12),
+        -1px 0 rgba(0,160,255,0.12);
+}
+
+.noise {
+    color: rgba(255,255,255,0.22);
+    font-family: monospace;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+}
+
+.noise.weak {
+    opacity: 0.18;
+}
+
+.noise.weaker {
+    opacity: 0.12;
+}
+
+.broken-page hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin: 26px 0;
+}
+
+/* 最後の1行 */
+.final-line {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+}
+
+.broken-page {
+    filter: brightness(0.82) contrast(1.08);
+}
+
+.broken-title {
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.9);
+    text-shadow:
+        2px 0 rgba(255,80,80,0.18),
+        -2px 0 rgba(120,180,255,0.18);
+}
+
+.broken-sub {
+    color: rgba(255,220,220,0.6);
+}
+
+.glitch-line {
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+}
+
+.glitch-line.weak {
+    opacity: 0.62;
+    transform: translateX(3px);
+}
+
+.glitch-line.weaker {
+    opacity: 0.42;
+    transform: translateX(-4px);
+}
+
+.glitch-line.danger {
+    color: rgba(255,120,120,0.88);
+    letter-spacing: 2px;
+}
+
+.noisy {
+    text-shadow:
+        1px 0 rgba(255,0,0,0.12),
+        -1px 0 rgba(0,160,255,0.12);
+}
+
+.broken-page hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin: 26px 0;
+}
+
+.hidden-line {
+    margin-top: 40px;
+    text-align: center;
+    color: rgba(255,255,255,0.75);
+    font-style: italic;
+    letter-spacing: 2px;
 }

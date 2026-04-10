@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>関係図 | 幻想プロジェクト</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -25,54 +26,86 @@
 
 <main>
 
+<p style="opacity:0.5; text-align:right;">o</p>
+
 <section>
     <h2>循環する存在</h2>
 
     <div class="circle-container">
 
-        <img src="circle-bg.jpg" class="circle-bg">
+        <img src="circle-bg.jpg" class="circle-bg" alt="循環構造">
 
-        <!-- 上 -->
         <div class="circle yura">
-            <span class="name">譜守ユラ</span>
-            <span class="role">保持者</span>
+            <span class="role-label">保持者</span>
+            <span class="name-label">譜守ユラ</span>
             <div class="tooltip">記録を維持し、存在を保つ者</div>
         </div>
 
-        <!-- 右 -->
         <div class="circle aoi">
-            <span class="name">綴目アオ</span>
-            <span class="role">収集者</span>
+            <span class="role-label">収集者</span>
+            <span class="name-label">綴目アオ</span>
             <div class="tooltip">失われた記録を集め続ける者</div>
         </div>
 
-        <!-- 下 -->
-        <div class="circle rewrite">
-            <span class="name">Rewrite</span>
-            <span class="role">改変者</span>
+        <div class="circle rewrite" onclick="showSecret()">
+            <span class="role-label">改変者</span>
+            <span class="name-label">Rewrite</span>
             <div class="tooltip">記録を書き換え世界を変える者</div>
         </div>
 
-        <!-- 左 -->
         <div class="circle reno">
-            <span class="name">零乃</span>
-            <span class="role">消去者</span>
+            <span class="role-label">消去者</span>
+            <span class="name-label">零乃</span>
             <div class="tooltip">存在と記録を断つ空白の存在</div>
         </div>
 
     </div>
 
+    <p id="secret-text" class="secret-text" onclick="askPassword()">
+        ……それは、本当に記録なの？
+    </p>
+
 </section>
 
 <section>
     <h2>補足</h2>
+
     <p>
         幻想域は循環している。<br>
         保持 → 収集 → 改変 → 消去。
     </p>
+
+    <p class="relation-text">
+        役割は分かれている。<br>
+        だが、そのすべては同じ現象へと繋がっている。
+        
+    </p>
+
+<p class="relation-text">
+すべては繋がっている。<br>
+順序は、必ずしも正しくない。
+</p>
+
 </section>
 
 </main>
+
+<script>
+function showSecret() {
+    const text = document.getElementById("secret-text");
+    text.style.opacity = "1";
+}
+
+function askPassword() {
+    const password = prompt("……その記録を、定義できるか？");
+
+    if (password === "record") {
+        window.location.href = "unknown.html";
+    } else {
+        alert("その記録は存在しない");
+    }
+}
+</script>
 
 </body>
 </html>
