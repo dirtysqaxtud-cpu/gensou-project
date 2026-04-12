@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アオの幻想域コレクション | 幻想プロジェクト</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+  .collection-wrapper {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  .collection-box,
+  .result-box,
+  .catalog-box {
+    background: rgba(5, 10, 35, 0.85);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 28px;
+  }
+
+  .collection-box h2,
+  .result-box h2,
+  .catalog-box h2 {
+    color: #fff;
+    margin: 0 0 16px;
+    font-size: 1.35rem;
+  }
+
+  .collection-box p,
+  .result-box p,
+  .catalog-box p {
+    color: rgba(255,255,255,0.88);
+    line-height: 1.9;
+    margin: 0 0 12px;
+  }
+
+  .collection-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(92,124,255,0.95), rgba(127,92,255,0.95));
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .collection-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+  }
+
+  .rate-note {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.8;
+  }
+
+  .result-card {
+    padding: 24px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .result-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .result-number,
+  .result-rarity {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .result-number {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.88);
+  }
+
+  .result-rarity {
+    color: #fff;
+  }
+
+  .rarity-n {
+    background: rgba(160,160,160,0.35);
+  }
+
+  .rarity-r {
+    background: rgba(90,140,255,0.35);
+  }
+
+  .rarity-sr {
+    background: rgba(170,90,255,0.35);
+  }
+
+  .rarity-ssr {
+    background: rgba(255,180,70,0.35);
+  }
+
+  .rarity-unknown {
+    background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(70,70,70,0.95));
+  }
+
+  .result-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  .result-line {
+    color: rgba(255,255,255,0.92);
+    line-height: 1.9;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .result-desc {
+    color: rgba(255,255,255,0.82);
+    line-height: 1.9;
+  }
+
+  .guide-text {
+    color: rgba(255,255,255,0.72);
+  }
+
+  .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .catalog-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 14px;
+    min-height: 108px;
+    transition: transform 0.18s ease, background 0.18s ease;
+  }
+
+  .catalog-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.06);
+  }
+
+  .catalog-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .catalog-number,
+  .catalog-rarity {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .catalog-number {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.88);
+  }
+
+  .catalog-rarity {
+    color: #fff;
+  }
+
+  .catalog-name {
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #fff;
+  }
+
+  .catalog-line {
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    font-size: 0.92rem;
+  }
+
+  .unknown-name,
+  .unknown-line {
+    color: rgba(255,255,255,0.45);
+  }
+
+  .secret-entry {
+    text-align: right;
+    margin-top: 18px;
+    opacity: 0.45;
+  }
+
+  .secret-button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.85rem;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+  }
+
+  .secret-button:hover {
+    color: rgba(255,255,255,0.8);
+  }
+
+  @media (max-width: 1000px) {
+    .catalog-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .catalog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .collection-box,
+    .result-box,
+    .catalog-box {
+      padding: 22px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .catalog-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .result-name {
+      font-size: 1.25rem;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>アオの幻想域コレクション</h1>
+  <p>綴目アオが集めてきた、幻想域の記録と断片。</p>
+
+  <nav>
+    <a href="index.html">ホーム</a>
+    <a href="world.html">世界観</a>
+    <a href="characters.html">キャラクター</a>
+    <a href="relations.html">関係図</a>
+    <a href="story.html">ストーリー</a>
+    <a href="glossary.html">用語集</a>
+    <a href="submit.html">記録提出</a>
+    <a href="ao-collection.html">アオの幻想域コレクション</a>
+  </nav>
+</header>
+
+<main class="collection-wrapper">
+
+  <section class="collection-box">
+    <h2>記録をひらく</h2>
+    <p>
+      アオが集めた記録の中には、名前のない感情や、<br>
+      どこにも属さない断片が静かに眠っている。
+    </p>
+    <p>
+      ボタンを押すと、その中からひとつが観測される。
+    </p>
+
+    <button class="collection-button" onclick="drawCollection()">記録をひらく</button>
+
+    <p class="rate-note">
+      排出率：N 60% / R 28% / SR 10% / SSR 1.99% / ??? 0.01%
+    </p>
+  </section>
+
+  <section class="result-box">
+    <h2>今回の観測結果</h2>
+    <div id="resultArea">
+      <p class="guide-text">まだ何も観測されていません。</p>
+    </div>
+  </section>
+
+  <section class="catalog-box">
+    <h2>幻想域図鑑</h2>
+    <p class="guide-text">観測された記録だけが名前を明かす。</p>
+    <div id="catalogArea" class="catalog-grid"></div>
+  </section>
+
+  <p class="secret-entry">
+    <button class="secret-button" onclick="openSecretPrompt()">記録外アクセス</button>
+  </p>
+
+</main>
+
+<script>
+  const aoCollections = [
+    // ===== N 60 =====
+    { no: 1, rarity:"N", name:"薄明の花片", line:"「咲いていた。」", desc:"小さな花の記録。" },
+    { no: 2, rarity:"N", name:"空白の手紙", line:"「書かれていない。」", desc:"何もない紙。" },
+    { no: 3, rarity:"N", name:"遠い足音", line:"「誰かがいた。」", desc:"足音の記録。" },
+    { no: 4, rarity:"N", name:"揺れる灯り", line:"「消えない。」", desc:"小さな光。" },
+    { no: 5, rarity:"N", name:"薄い影", line:"「そこにある。」", desc:"影の記録。" },
+    { no: 6, rarity:"N", name:"曖昧な記憶", line:"「思い出せない。」", desc:"ぼやけた記憶。" },
+    { no: 7, rarity:"N", name:"崩れた石片", line:"「形がない。」", desc:"壊れた石。" },
+    { no: 8, rarity:"N", name:"静かな風", line:"「通り過ぎた。」", desc:"風の痕跡。" },
+    { no: 9, rarity:"N", name:"白い紙片", line:"「まだ書かれていない。」", desc:"未完成の記録。" },
+    { no: 10, rarity:"N", name:"淡い光点", line:"「消えかけている。」", desc:"弱い光。" },
+
+    { no: 11, rarity:"N", name:"途切れた音", line:"「続かない。」", desc:"音の残骸。" },
+    { no: 12, rarity:"N", name:"曇った鏡", line:"「映らない。」", desc:"何も映さない。" },
+    { no: 13, rarity:"N", name:"沈黙の欠片", line:"「語らない。」", desc:"音のない存在。" },
+    { no: 14, rarity:"N", name:"崩れる砂", line:"「保てない。」", desc:"形を失う砂。" },
+    { no: 15, rarity:"N", name:"遠い影", line:"「届かない。」", desc:"離れた存在。" },
+    { no: 16, rarity:"N", name:"淡い残響", line:"「まだ残る。」", desc:"消えない音。" },
+    { no: 17, rarity:"N", name:"歪んだ線", line:"「曲がっている。」", desc:"形が崩れた線。" },
+    { no: 18, rarity:"N", name:"忘れられた欠片", line:"「思い出されない。」", desc:"記憶されないもの。" },
+    { no: 19, rarity:"N", name:"小さな光", line:"「そこにある。」", desc:"弱い存在。" },
+    { no: 20, rarity:"N", name:"静止した影", line:"「動かない。」", desc:"止まった存在。" },
+
+    { no: 21, rarity:"N", name:"欠けた羽片", line:"「飛べなかった。」", desc:"羽の記録。" },
+    { no: 22, rarity:"N", name:"眠る水面", line:"「揺れない。」", desc:"静かな水。" },
+    { no: 23, rarity:"N", name:"砕けた星片", line:"「落ちてきた。」", desc:"砕けた光。" },
+    { no: 24, rarity:"N", name:"鈍い鈴音", line:"「遠くで鳴る。」", desc:"鈴の残響。" },
+    { no: 25, rarity:"N", name:"古い栞", line:"「途中で閉じた。」", desc:"本の記憶。" },
+    { no: 26, rarity:"N", name:"細い糸", line:"「まだ切れていない。」", desc:"繋がりの名残。" },
+    { no: 27, rarity:"N", name:"薄い彩り", line:"「色だけが残る。」", desc:"感情の余韻。" },
+    { no: 28, rarity:"N", name:"深い息遣い", line:"「そこにいた。」", desc:"存在の気配。" },
+    { no: 29, rarity:"N", name:"遠ざかる声", line:"「届かなかった。」", desc:"消えかけた声。" },
+    { no: 30, rarity:"N", name:"眠った頁", line:"「まだ開かれない。」", desc:"閉じた記録。" },
+
+    { no: 31, rarity:"N", name:"薄い温度", line:"「まだ冷えない。」", desc:"残ったぬくもり。" },
+    { no: 32, rarity:"N", name:"かすれた印", line:"「誰かの跡。」", desc:"消えかけた痕跡。" },
+    { no: 33, rarity:"N", name:"夜のひとかけ", line:"「暗さだけ残る。」", desc:"夜の記録。" },
+    { no: 34, rarity:"N", name:"崩れた花弁", line:"「散っていた。」", desc:"花の終わり。" },
+    { no: 35, rarity:"N", name:"弱い鼓動", line:"「まだ止まらない。」", desc:"生の余韻。" },
+    { no: 36, rarity:"N", name:"柔らかな砂紋", line:"「触れられた。」", desc:"風の模様。" },
+    { no: 37, rarity:"N", name:"細かな雨粒", line:"「落ちていた。」", desc:"雨の痕跡。" },
+    { no: 38, rarity:"N", name:"古い鍵片", line:"「開かなかった。」", desc:"閉ざされたもの。" },
+    { no: 39, rarity:"N", name:"淡雪の記録", line:"「すぐ溶けた。」", desc:"儚い痕跡。" },
+    { no: 40, rarity:"N", name:"青い欠光", line:"「少しだけ残る。」", desc:"色の残滓。" },
+
+    { no: 41, rarity:"N", name:"割れた硝子片", line:"「元には戻らない。」", desc:"壊れた形。" },
+    { no: 42, rarity:"N", name:"置き去りの頁", line:"「続きはない。」", desc:"失われた続き。" },
+    { no: 43, rarity:"N", name:"鈍色の雲片", line:"「晴れない。」", desc:"曇った気配。" },
+    { no: 44, rarity:"N", name:"揺らぐ葉影", line:"「まだ揺れる。」", desc:"木漏れ日の記録。" },
+    { no: 45, rarity:"N", name:"薄い水滴", line:"「落ちきらない。」", desc:"止まった雫。" },
+    { no: 46, rarity:"N", name:"小さな爪痕", line:"「残っている。」", desc:"触れた痕跡。" },
+    { no: 47, rarity:"N", name:"忘れた言葉", line:"「もう読めない。」", desc:"意味を失った言葉。" },
+    { no: 48, rarity:"N", name:"静かな端切れ", line:"「役目は終わった。」", desc:"布の残り。" },
+    { no: 49, rarity:"N", name:"夜明けの欠片", line:"「明るくなりきらない。」", desc:"途中の朝。" },
+    { no: 50, rarity:"N", name:"細い残火", line:"「まだ消えない。」", desc:"燃え残り。" },
+
+    { no: 51, rarity:"N", name:"綻んだ糸片", line:"「解けていく。」", desc:"ほどける記録。" },
+    { no: 52, rarity:"N", name:"ひそかな鈍光", line:"「見えにくい。」", desc:"弱い輝き。" },
+    { no: 53, rarity:"N", name:"空の輪郭", line:"「まだ形がない。」", desc:"曖昧な空。" },
+    { no: 54, rarity:"N", name:"滲んだ墨痕", line:"「読めない。」", desc:"滲んだ文字。" },
+    { no: 55, rarity:"N", name:"長い余白", line:"「何も書かれない。」", desc:"空白の時間。" },
+    { no: 56, rarity:"N", name:"眠い光彩", line:"「閉じかけている。」", desc:"ぼやけた光。" },
+    { no: 57, rarity:"N", name:"鈍い欠音", line:"「もう響かない。」", desc:"失われた音。" },
+    { no: 58, rarity:"N", name:"遠い記録片", line:"「近づけない。」", desc:"遠ざかった記録。" },
+    { no: 59, rarity:"N", name:"小さな余熱", line:"「まだ残る。」", desc:"消えかけた熱。" },
+    { no: 60, rarity:"N", name:"静かな末端", line:"「終わりだけある。」", desc:"最後の断ち切れ。" },
+
+    { no: 61, rarity:"R", name:"途切れた足跡", line:"「先がない。」", desc:"途中で消える。" },
+    { no: 62, rarity:"R", name:"歪んだ記憶", line:"「正しくない。」", desc:"変形した記憶。" },
+    { no: 63, rarity:"R", name:"反転した影", line:"「逆になっている。」", desc:"反転した存在。" },
+    { no: 64, rarity:"R", name:"残る視線", line:"「見られている。」", desc:"視線の記録。" },
+    { no: 65, rarity:"R", name:"歪む境界", line:"「ここはどこ？」", desc:"境界の崩壊。" },
+    { no: 66, rarity:"R", name:"繰り返す断片", line:"「同じだ。」", desc:"ループする。" },
+    { no: 67, rarity:"R", name:"静止した時間", line:"「進まない。」", desc:"止まる時間。" },
+    { no: 68, rarity:"R", name:"交差する記録", line:"「重なっている。」", desc:"混ざった記録。" },
+    { no: 69, rarity:"R", name:"消えない影", line:"「残り続ける。」", desc:"消えない存在。" },
+    { no: 70, rarity:"R", name:"歪んだ風景", line:"「正しくない。」", desc:"壊れた景色。" },
+    { no: 71, rarity:"R", name:"重なる残響", line:"「一つじゃない。」", desc:"音が重なっている。" },
+    { no: 72, rarity:"R", name:"崩れた輪郭", line:"「定まらない。」", desc:"形の不安定な存在。" },
+    { no: 73, rarity:"R", name:"遅れた返答", line:"「間に合わない。」", desc:"届かない応答。" },
+    { no: 74, rarity:"R", name:"捻れた道標", line:"「示せない。」", desc:"道を失った印。" },
+    { no: 75, rarity:"R", name:"反復する音階", line:"「終わらない。」", desc:"繰り返す譜。" },
+    { no: 76, rarity:"R", name:"置換された頁", line:"「元と違う。」", desc:"入れ替わった記録。" },
+    { no: 77, rarity:"R", name:"曖昧な境目", line:"「分けられない。」", desc:"溶けた境界線。" },
+    { no: 78, rarity:"R", name:"残置された声", line:"「まだ離れない。」", desc:"声だけが残る。" },
+    { no: 79, rarity:"R", name:"歪んだ星図", line:"「位置が違う。」", desc:"ズレた配置。" },
+    { no: 80, rarity:"R", name:"交わらない糸", line:"「繋げない。」", desc:"結べない関係。" },
+    { no: 81, rarity:"R", name:"止まった揺らぎ", line:"「変わらない揺れ。」", desc:"矛盾した動き。" },
+    { no: 82, rarity:"R", name:"逆向きの風", line:"「戻ってくる。」", desc:"流れに逆らう痕跡。" },
+    { no: 83, rarity:"R", name:"欠けた連鎖", line:"「続かない。」", desc:"途切れた繋がり。" },
+    { no: 84, rarity:"R", name:"二重の影跡", line:"「どちらも本物。」", desc:"重なった存在。" },
+    { no: 85, rarity:"R", name:"ズレた余白", line:"「収まらない。」", desc:"枠に収まらない記録。" },
+
+    { no: 86, rarity:"SR", name:"無名の記録", line:"「ここにいた。」", desc:"名前のない記録。" },
+    { no: 87, rarity:"SR", name:"静かな譜片", line:"「触れられない。」", desc:"干渉できない。" },
+    { no: 88, rarity:"SR", name:"崩れない断片", line:"「消えない。」", desc:"残り続ける。" },
+    { no: 89, rarity:"SR", name:"歪まない形", line:"「変わらない。」", desc:"固定された存在。" },
+    { no: 90, rarity:"SR", name:"存在の痕跡", line:"「確かにあった。」", desc:"消えない証明。" },
+    { no: 91, rarity:"SR", name:"未接続の譜", line:"「まだ繋がらない。」", desc:"未完成の譜。" },
+    { no: 92, rarity:"SR", name:"観測外の気配", line:"「見えないのにある。」", desc:"観測から外れた存在。" },
+    { no: 93, rarity:"SR", name:"沈まない余韻", line:"「終わりきらない。」", desc:"消えない終わり。" },
+    { no: 94, rarity:"SR", name:"輪郭なき存在", line:"「形が決まらない。」", desc:"曖昧に残る存在。" },
+    { no: 95, rarity:"SR", name:"記録前の気配", line:"「まだ書かれていない。」", desc:"観測前にあるもの。" },
+
+    {
+      no: 96,
+      rarity: "SSR",
+      name: "沈黙した譜",
+      line: "「維持されない。」",
+      desc: "譜守ユラの静譜が反応しない存在。維持されていないにも関わらず消えない。"
+    },
+    {
+      no: 97,
+      rarity: "SSR",
+      name: "接続されない断片",
+      line: "「どこにも繋がらない。」",
+      desc: "綴目アオでも接続できない断片。完全に孤立して存在している。"
+    },
+    {
+      no: 98,
+      rarity: "SSR",
+      name: "改変不能の形",
+      line: "「正しくも、誤りでもない。」",
+      desc: "Rewriteでも書き換えられない存在。"
+    },
+    {
+      no: 99,
+      rarity: "SSR",
+      name: "消去不能の痕跡",
+      line: "「消せない。」",
+      desc: "零乃でも消去できない存在。"
+    },
+    {
+      no: 100,
+      rarity: "???",
+      name: "幻想譜",
+      line: "「終わりは、終わりにならない。」",
+      desc: "それは記録ではない。断片でもない。存在の終わりと、その先が同時に重なっている。消えたはずの存在は、別の形で再び現れる。変わり続けながら、同じであり続ける。それが、この世界の永遠。"
+    }
+  ];
+
+  const rarityRates = [
+    { rarity: "???", weight: 0.01 },
+    { rarity: "SSR", weight: 1.99 },
+    { rarity: "SR", weight: 10 },
+    { rarity: "R", weight: 28 },
+    { rarity: "N", weight: 60 }
+  ];
+
+  const obtained = new Set();
+
+  function getRarityClass(rarity) {
+    switch (rarity) {
+      case "N": return "rarity-n";
+      case "R": return "rarity-r";
+      case "SR": return "rarity-sr";
+      case "SSR": return "rarity-ssr";
+      case "???": return "rarity-unknown";
+      default: return "";
+    }
+  }
+
+  function formatNumber(no) {
+    return `No.${String(no).padStart(3, "0")}`;
+  }
+
+  function pickRarity() {
+    const totalWeight = rarityRates.reduce((sum, item) => sum + item.weight, 0);
+    let random = Math.random() * totalWeight;
+
+    for (const entry of rarityRates) {
+      random -= entry.weight;
+      if (random < 0) {
+        return entry.rarity;
+      }
+    }
+
+    return "N";
+  }
+
+  function drawCollection() {
+    const selectedRarity = pickRarity();
+    const candidates = aoCollections.filter(item => item.rarity === selectedRarity);
+    const item = candidates[Math.floor(Math.random() * candidates.length)];
+
+    obtained.add(item.no);
+    renderCatalog();
+
+    const rarityClass = getRarityClass(item.rarity);
+    const resultArea = document.getElementById("resultArea");
+
+    resultArea.innerHTML = `
+      <div class="result-card">
+        <div class="result-top">
+          <div class="result-number">${formatNumber(item.no)}</div>
+          <div class="result-rarity ${rarityClass}">${item.rarity}</div>
+        </div>
+        <div class="result-name">${item.name}</div>
+        <div class="result-line">${item.line}</div>
+        <div class="result-desc">${item.desc}</div>
+
+        ${item.rarity === "???" ? `
+          <div style="margin-top:20px;">
+            <button class="collection-button" onclick="openGensofu()">
+              幻想譜をみる
+            </button>
+          </div>
+        ` : ""}
+      </div>
+    `;
+
+    if (item.rarity === "???") {
+      document.body.style.transition = "0.3s";
+      document.body.style.background = "#000";
+
+      setTimeout(() => {
+        alert("——観測不能な記録を検出——\n\n幻想域の真実に、近づいているかもしれない。\n\n終わりは、終わりにならない。");
+        document.body.style.background = "";
+      }, 300);
+    }
+  }
+
+  function renderCatalog() {
+    const area = document.getElementById("catalogArea");
+
+    area.innerHTML = aoCollections.map(item => {
+      const isOwned = obtained.has(item.no);
+
+      return `
+        <div class="catalog-item">
+          <div class="catalog-top">
+            <div class="catalog-number">${formatNumber(item.no)}</div>
+            <div class="catalog-rarity ${getRarityClass(item.rarity)}">${item.rarity}</div>
+          </div>
+          <div class="catalog-name ${isOwned ? "" : "unknown-name"}">
+            ${isOwned ? item.name : "？？？"}
+          </div>
+          <div class="catalog-line ${isOwned ? "" : "unknown-line"}">
+            ${isOwned ? item.line : "未観測"}
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function openSecretPrompt() {
+    const pass = prompt("アクセスキーを入力してください");
+
+    if (pass === "幻想譜") {
+      openGensofu(true);
+    } else if (pass !== null) {
+      alert("……認識できない記録です");
+    }
+  }
+
+  function openGensofu(isDirect = false) {
+    const resultArea = document.getElementById("resultArea");
+
+    resultArea.innerHTML = `
+      <div class="result-card">
+        <div class="result-top">
+          <div class="result-number">No.100</div>
+          <div class="result-rarity rarity-unknown">???</div>
+        </div>
+        <div class="result-name">幻想譜</div>
+        <div class="result-line">「終わりは、終わりにならない。」</div>
+        <div class="result-desc">
+          それは記録ではない。断片でもない。存在が消えたあとに残されるはずの何かでもない。<br><br>
+          幻想域において、存在は記録によって支えられ、記録を失えば消えるはずだった。<br>
+          だがこの『幻想譜』は、そのすべての前提の外側にある。<br><br>
+          これは終わりの記録であり、同時に始まりの記録でもある。<br>
+          ある存在が消滅したという事実と、その存在が別の形で再び現れるという結果が、ひとつの“譜”として重なっている。<br><br>
+          見た目も、記憶も、在り方も変わる。<br>
+          だがそれでもなお、それは確かに“同じ存在”である。<br><br>
+          この世界における永遠とは、不変であることではない。<br>
+          変わり続けることで、同じであり続けるということだ。<br><br>
+          幻想譜は、その循環そのものを記録している。
+        </div>
+      </div>
+    `;
+
+    if (isDirect) {
+      alert("——記録外アクセスを確認——\n\n幻想譜への接続を許可しました。");
+    }
+  }
+
+  renderCatalog();
+</script>
+
+</body>
+</html>

@@ -930,3 +930,21 @@ main img {
     font-style: italic;
     letter-spacing: 2px;
 }
+
+.ao-collection-link {
+  max-width: 1100px;
+  margin: 70px auto;
+  padding: 30px;
+  background: rgba(5, 10, 35, 0.85);
+  border-radius: 20px;
+}
+
+.ao-collection-link h2 {
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.ao-collection-link p {
+  color: rgba(255,255,255,0.9);
+  line-height: 2;
+}
