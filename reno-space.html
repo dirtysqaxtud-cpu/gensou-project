@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> </title>
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    font-family: "Yu Mincho", serif;
+    cursor: pointer;
+  }
+
+  .space {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(18,18,18,0.35) 0%, #000 72%);
+  }
+
+  .noise {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.012),
+      rgba(255,255,255,0.012) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  .text-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: min(90%, 900px);
+  }
+
+  .main-text {
+    color: rgba(255,255,255,0.18);
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    line-height: 2.3;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transition: opacity 1s ease;
+    white-space: pre-line;
+    min-height: 11em;
+  }
+
+  .main-text.show {
+    opacity: 1;
+  }
+
+  .hint {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.08);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+
+  .hint.show {
+    opacity: 1;
+  }
+
+  .fade-out {
+    animation: fadeOut 1.5s forwards;
+  }
+
+  @keyframes fadeOut {
+    to { opacity: 0; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="space">
+  <div class="noise"></div>
+
+  <div class="text-wrap">
+    <div id="text" class="main-text"></div>
+  </div>
+
+  <div id="hint" class="hint">クリックして進む</div>
+</div>
+
+<script>
+const texts = [
+`ここには、まだ何もない。
+
+そう認識されている。
+そう扱われている。
+だが——
+何もないことと、何も存在しないことは、同じではない。`,
+
+`ここに残るものは、
+記録として数えられない。
+
+名前を持たず、
+構造にも組み込まれず、
+誰かの記憶として保たれることもない。
+
+それでも、
+完全に失われたわけではない。`,
+
+`存在しているのに、
+存在として扱われない。
+
+触れられないのに、
+そこにある。
+
+見えているのに、
+正しい形として定義されない。
+
+それが空白に最も近い。`,
+
+`空白とは、
+何もない領域ではない。
+
+記録にもなれず、
+断章にもなれず、
+消失にすら辿り着けなかったものが、
+ただ留まり続けている状態だ。`,
+
+`本来なら、
+存在は記録によって支えられる。
+
+記録が崩れれば揺らぎ、
+譜を失えば消えていく。
+
+だが、
+ここにあるものは違う。
+
+支えられていないのに、
+まだ残っている。`,
+
+`ここでは、
+触れることは救いにならない。
+
+形を与えることも、
+名前を与えることも、
+元に戻すことも、
+必ずしも正しさにはならない。
+
+定義された瞬間、
+それはもう
+別のものになってしまうから。`,
+
+`消せないものは、
+残るしかない。
+
+だが、
+残ることが
+存在を許されることと同じだとは限らない。
+
+ここに在るものは、
+ただ消え損ねたわけではない。
+
+どこにも属せないまま、
+静かに取り残されている。`,
+
+`それは終わりではない。
+
+始まりでもない。
+
+記録の外で、
+存在の手前で、
+定義されることを拒まれたまま、
+わずかに留まり続けている。`,
+
+`もしここに
+名前を置けば、
+それは形を持つ。
+
+形を持てば、
+別のものとして扱われる。
+
+ここにあるものは、
+その一歩手前で止まり続けている。
+
+だからこそ、
+まだ“これ”のままでいられる。`,
+
+`ここは、
+失われた場所ではない。
+
+忘れられた場所でもない。
+
+触れられなかったもの、
+消されなかったもの、
+定義されることなく残ったものが、
+音もなく沈み続けている領域。`,
+
+`ここに長く留まれば、
+輪郭は曖昧になる。
+
+何を見ていたのか、
+何が残っていたのか、
+それが本当に存在だったのかさえ、
+少しずつ分からなくなる。
+
+だから——`,
+
+`……ここは、
+あなたのいるべき場所ではない。
+
+ここに意味を求めてはいけない。
+ここに形を与えてはいけない。
+ここに留まり続けてもいけない。
+
+戻って。
+まだ、あなたが定義できる場所へ。`
+];
+
+let index = 0;
+let ready = false;
+let finished = false;
+
+const text = document.getElementById("text");
+const hint = document.getElementById("hint");
+
+function showText(i){
+  ready = false;
+  text.classList.remove("show");
+
+  setTimeout(() => {
+    text.textContent = texts[i];
+    text.classList.add("show");
+
+    if(i === 0){
+      hint.classList.add("show");
+    }
+
+    setTimeout(() => {
+      ready = true;
+    }, 450);
+  }, 220);
+}
+
+function next(){
+  if(!ready) return;
+
+  if(index < texts.length - 1){
+    index++;
+    showText(index);
+  } else if(!finished) {
+    finished = true;
+    hint.textContent = "クリックで戻る";
+  } else {
+    document.body.classList.add("fade-out");
+
+    setTimeout(() => {
+      window.location.href = "glossary.html";
+    }, 1500);
+  }
+}
+
+document.body.addEventListener("click", next);
+
+showText(index);
+</script>
+
+</body>
+</html>
