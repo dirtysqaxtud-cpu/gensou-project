@@ -33,99 +33,57 @@
       line-height: 2;
     }
 
-    /* 本棚っぽい並び */
+    .chapter-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .chapter-button {
+      padding: 14px 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(5, 10, 35, 0.85);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .chapter-button.active {
+      background: linear-gradient(135deg, rgba(92,124,255,0.95), rgba(127,92,255,0.95));
+    }
+
+    .episode-section { display: none; }
+    .episode-section.active { display: block; }
+
     .episode-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 22px;
-      margin-bottom: 40px;
-      align-items: stretch;
     }
 
-    /* 本っぽいカード */
     .episode-card {
-      position: relative;
-      margin-bottom: 0;
-      padding: 28px 24px 24px 28px;
       border-radius: 16px;
-      background: linear-gradient(180deg, rgba(10, 18, 55, 0.96), rgba(5, 10, 35, 0.96));
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.28);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      overflow: hidden;
-    }
-
-    .episode-card::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 10px;
-      background: linear-gradient(180deg, rgba(127,92,255,0.85), rgba(92,124,255,0.75));
-      box-shadow: inset -1px 0 0 rgba(255,255,255,0.15);
-    }
-
-    .episode-card::after {
-      content: "";
-      position: absolute;
-      left: 14px;
-      top: 16px;
-      bottom: 16px;
-      width: 1px;
-      background: rgba(255,255,255,0.08);
-    }
-
-    .episode-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.35);
-    }
-
-    .episode-card h3 {
-      font-size: 1.2rem;
-      letter-spacing: 0.03em;
-    }
-
-    .episode-card p {
-      font-size: 0.97rem;
+      background: rgba(10, 18, 55, 0.96);
+      padding: 20px;
     }
 
     .episode-next {
-      margin-top: 24px;
+      margin-top: 16px;
       text-align: center;
     }
 
     .next-button {
       display: inline-block;
-      padding: 14px 24px;
+      padding: 10px 20px;
       border-radius: 999px;
-      text-decoration: none;
       color: #fff;
-      font-weight: 700;
-      background: linear-gradient(135deg, rgba(92,124,255,0.95), rgba(127,92,255,0.95));
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      text-decoration: none;
+      background: rgba(92,124,255,0.95);
     }
 
-    .next-button:hover {
-      transform: translateY(-2px);
-      opacity: 0.95;
-    }
-
-    @media (max-width: 800px) {
-      .story-wrapper {
-        padding: 16px;
-      }
-
-      .story-intro-box,
-      .episode-card {
-        padding: 24px;
-      }
-
-      .episode-card {
-        padding-left: 28px;
-      }
-    }
+    .locked { opacity: 0.5; }
   </style>
 </head>
 
@@ -148,134 +106,108 @@
 
   <section class="story-intro-box">
     <h2>物語のはじまり</h2>
-
     <p>これは、記録によって存在する世界の物語。</p>
-
-    <p>
-      言葉、記憶、感情──<br>
-      それらは「記録」として残り、幻想域へと流れ着く。
-    </p>
-
-    <p>記録は、存在を生み出す。</p>
-
-    <p>
-      そして存在は、<br>
-      記録によって形を保っている。
-    </p>
-
-    <p>
-      だが今、幻想域に<br>
-      わずかな“揺らぎ”が生まれ始めている。
-    </p>
-
-    <p>記録に支えられないもの。</p>
-    <p>存在しているはずのないもの。</p>
-
-    <p>
-      それはやがて、<br>
-      世界の構造そのものを揺るがす。
-    </p>
-
-    <p>幻想は、消えない。</p>
-
-    <p>これは、幻想が織りなす物語。</p>
   </section>
 
-  <section class="episode-list">
+  <div class="chapter-buttons">
+    <button class="chapter-button active" onclick="showChapter('chapter1', this)">1〜10話</button>
+    <button class="chapter-button" onclick="showChapter('chapter2', this)">11〜20話</button>
+  </div>
 
-    <div class="episode-card">
-      <h3>第一話</h3>
-      <p>幻想域の空は、いつも通り静かだった。</p>
-      <p>だがその日、ほんのわずかに違和感が生まれる。</p>
-      <div class="episode-next">
-        <a href="episode1.html" class="next-button">第一話を読む</a>
+  <!-- 1〜10 -->
+  <section id="chapter1" class="episode-section active">
+    <div class="episode-list">
+
+      <!-- ここ修正済み -->
+      <div class="episode-card">
+        <h3>第一話</h3>
+        <div class="episode-next"><a href="episode1.html" class="next-button">読む</a></div>
       </div>
-    </div>
 
-    <div class="episode-card">
-      <h3>第二話</h3>
-      <p>揺らぎは消えず、むしろわずかに広がっていた。</p>
-      <p>存在しているのに、記録されていない断片が見つかる。</p>
-      <div class="episode-next">
-        <a href="episode2.html" class="next-button">第二話を読む</a>
+      <div class="episode-card">
+        <h3>第二話</h3>
+        <div class="episode-next"><a href="episode2.html" class="next-button">読む</a></div>
       </div>
-    </div>
 
-    <div class="episode-card">
-      <h3>第三話</h3>
-      <p>収集者たちは、記録として扱えない断片に触れる。</p>
-      <p>それは、集めることも消すこともできない存在だった。</p>
-      <div class="episode-next">
-        <a href="episode3.html" class="next-button">第三話を読む</a>
+      <div class="episode-card">
+        <h3>第三話</h3>
+        <div class="episode-next"><a href="episode3.html" class="next-button">読む</a></div>
       </div>
-    </div>
 
-    <div class="episode-card">
-      <h3>第四話</h3>
-      <p>記録に属さない断片が、幻想域の各所で同時に観測され始める。</p>
-      <p>揺らぎはひとつではなく、すでに広がり始めていた。</p>
-      <div class="episode-next">
-        <a href="episode4.html" class="next-button">第四話を読む</a>
+      <div class="episode-card">
+        <h3>第四話</h3>
+        <div class="episode-next"><a href="episode4.html" class="next-button">読む</a></div>
       </div>
-    </div>
 
-    <div class="episode-card">
-      <h3>第五話</h3>
-      <p>増え続ける断片は、もはや同じものではなかった。</p>
-      <p>それは断片ではなく、観測される前の“存在”として現れ始める。</p>
-      <div class="episode-next">
-        <a href="episode5.html" class="next-button">第五話を読む</a>
+      <div class="episode-card">
+        <h3>第五話</h3>
+        <div class="episode-next"><a href="episode5.html" class="next-button">読む</a></div>
       </div>
-    </div>
 
-    <div class="episode-card">
-      <h3>第六話</h3>
-      <p>改変者Rewriteが現れ、世界の歪みは静かに整えられていく。</p>
-      <p>だが、断片だけは書き換えられず、その存在はより深い異質を示していた。</p>
-      <div class="episode-next">
-        <a href="episode6.html" class="next-button">第六話を読む</a>
+      <div class="episode-card">
+        <h3>第六話</h3>
+        <div class="episode-next"><a href="episode6.html" class="next-button">読む</a></div>
       </div>
-    </div>
 
-    <div class="episode-card">
-      <h3>第七話</h3>
-      <p>アオは断片に触れ、欠けた存在を繋ごうとする。</p>
-      <p>だがそれは復元ではなく、別のものへの再構成を引き起こしてしまう。</p>
-      <div class="episode-next">
-        <a href="episode7.html" class="next-button">第七話を読む</a>
+      <div class="episode-card">
+        <h3>第七話</h3>
+        <div class="episode-next"><a href="episode7.html" class="next-button">読む</a></div>
       </div>
-    </div>
 
-    <div class="episode-card">
-      <h3>第八話｜残す形</h3>
-      <p>零乃が現れ、断片に対してさえ干渉できない現実が明らかになる。</p>
-      <p>消せないものを前に、アオは“残す形を選ぶ”という決意へ近づいていく。</p>
-      <div class="episode-next">
-        <a href="episode8.html" class="next-button">第八話を読む</a>
+      <div class="episode-card">
+        <h3>第八話</h3>
+        <div class="episode-next"><a href="episode8.html" class="next-button">読む</a></div>
       </div>
-    </div>
 
-    <div class="episode-card">
-      <h3>第九話｜生成</h3>
-      <p>アオは断片を繋ぎ、新たな形を与えようとする。</p>
-      <p>だがそれは復元ではなく、“元とは違う別の存在”を生み出してしまう。</p>
-      <div class="episode-next">
-        <a href="episode9.html" class="next-button">第九話を読む</a>
+      <div class="episode-card">
+        <h3>第九話</h3>
+        <div class="episode-next"><a href="episode9.html" class="next-button">読む</a></div>
       </div>
-    </div>
 
-    <div class="episode-card">
-      <h3>第十話｜更新</h3>
-      <p>完成に近づいた存在は零乃によって消され、アオはその喪失を目の当たりにする。</p>
-      <p>そこへ白い存在が現れ、崩壊ではなく“更新”だと告げて、新たな価値観を持ち込む。</p>
-      <div class="episode-next">
-        <a href="episode10.html" class="next-button">第十話を読む</a>
+      <div class="episode-card">
+        <h3>第十話</h3>
+        <div class="episode-next"><a href="episode10.html" class="next-button">読む</a></div>
       </div>
-    </div>
 
+    </div>
+  </section>
+
+  <!-- 11〜20 -->
+  <section id="chapter2" class="episode-section">
+    <div class="episode-list">
+
+      <div class="episode-card">
+        <h3>第十一話｜選択</h3>
+        <div class="episode-next"><a href="episode11.html" class="next-button">読む</a></div>
+      </div>
+
+      <div class="episode-card">
+        <h3>第十二話｜存在しないこと</h3>
+        <div class="episode-next"><a href="episode12.html" class="next-button">読む</a></div>
+      </div>
+
+      <div class="episode-card locked"><h3>第十三話</h3><p>記録未到達</p></div>
+      <div class="episode-card locked"><h3>第十四話</h3><p>記録未到達</p></div>
+      <div class="episode-card locked"><h3>第十五話</h3><p>記録未到達</p></div>
+      <div class="episode-card locked"><h3>第十六話</h3><p>記録未到達</p></div>
+      <div class="episode-card locked"><h3>第十七話</h3><p>記録未到達</p></div>
+      <div class="episode-card locked"><h3>第十八話</h3><p>記録未到達</p></div>
+      <div class="episode-card locked"><h3>第十九話</h3><p>記録未到達</p></div>
+      <div class="episode-card locked"><h3>第二十話</h3><p>記録未到達</p></div>
+
+    </div>
   </section>
 
 </main>
+
+<script>
+function showChapter(id, btn){
+  document.querySelectorAll(".episode-section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".chapter-button").forEach(b=>b.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  btn.classList.add("active");
+}
+</script>
 
 </body>
 </html>
